@@ -1,5 +1,6 @@
 """
-Given an unsorted array A of size N of non-negative integers, find a continuous sub-array which adds to a given number S.
+Given an unsorted array A of size N of non-negative integers, find a continuous sub-array
+which adds to a given number S.
 
 Input:
 The first line of input contains an integer T denoting the number of test cases.
@@ -34,9 +35,12 @@ Testcase2: sum of elements from 1st position to 5th position is 15
 
 
 def main():
+    """
+    Application start
+    """
     num_test_cases = int(input("Number of test cases: "))
     test_cases = []
-    for testNum in range(1, num_test_cases+1):
+    for test_num in range(1, num_test_cases+1):
         line1 = input("Enter N and S: ")
         line2 = input("Enter the array: ")
         test_case = {
@@ -56,21 +60,20 @@ def find_sub_array(n: int, s: int, array: list):
     """
     end = None
     for idx, elem in enumerate(array):
-        sum = elem
+        sum_of_elems = elem
         start = idx
         for idx2 in range(idx+1, n):
             elem2 = array[idx2]
-            if sum > s:
+            if sum_of_elems > s:
                 break
-            elif sum == s:
+            elif sum_of_elems == s:
                 end = idx2
                 break
             else:
-                sum = sum + elem2
+                sum_of_elems = sum_of_elems + elem2
         if end is not None:
             return start+1, end         # because of 1 indexing
     return None, None
-
 
 if __name__ == '__main__':
     main()
