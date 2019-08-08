@@ -46,21 +46,3 @@ class LruCache:
     def print(self):
         for k in self._cache:
             print('{} = {}'.format(k, self._cache[k].val))
-
-
-cache = LruCache(2)
-cache.set(1, 10)
-cache.set(2, 20)
-
-print(cache.get(1)) #10
-
-cache.set(3, 30)
-print(cache.get(3)) #30
-print(cache.get(2)) #-1
-
-
-cache.set(4, 40)
-print(cache.get(1)) #-1
-print(cache.get(3))
-print(cache.get(4))
-
