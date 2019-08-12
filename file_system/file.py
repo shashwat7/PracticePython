@@ -1,17 +1,16 @@
-files = {}  # A dictionary to keep names of all files
-
 
 class File:
     """
     This file represents a file in a file system
     """
+    files = {}  # A dictionary to keep names of all files
 
     def __init__(self, file_path: str, location):
-        if file_path in files:
+        if file_path in File.files:
             raise Exception('File {} already exists!'.format(file_path))
         self.file_path = file_path
         self.location = location
-        files[file_path] = self
+        File.files[file_path] = self
         location.add_file(self)
 
     def __str__(self):
