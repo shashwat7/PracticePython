@@ -17,6 +17,7 @@ Expalnation : Four ways will be -> "a.b..",
 
 Question: https://www.geeksforgeeks.org/ways-transforming-one-string-removing-0-characters/
 """
+memorize = {}
 
 
 def get_num_ways_to_transform(a: str, b: str):
@@ -34,7 +35,12 @@ def get_combinations(a: str, b: str):
     select `len(b)` number of characters from string a in such a way
     that they are in order. Pick the first character which is equal
     to b's first character and then proceed by reducing both a and b
+
+    TODO: memory can be reduced if we memorize character wise instead
+    of whole strings.
     """
+    if (a, b) in memorize:
+        return memorize[(a, b)]
     if not b:
         return 1
     if not a:
@@ -43,6 +49,7 @@ def get_combinations(a: str, b: str):
     for i in range(len(a)):
         if a[i] == b[0]:
             s = s + get_combinations(a[i + 1:], b[1:])
+    memorize[(a, b)] = s
     return s
 
 
